@@ -9,11 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name       = trim($_POST["name"]);
     $course     = trim($_POST["course"]);
     $section    = trim($_POST["section"]);
+    $year    = trim($_POST["year"]);
  
     if ($student_id === "") $errors[] = "Student ID is required.";
     if ($name === "")       $errors[] = "Name is required.";
     if ($course === "")     $errors[] = "Course is required.";
     if ($section === "")    $errors[] = "Section is required.";
+    if ($year === "")    $errors[] = "Year is required.";
  
     if (empty($errors)) {
         $sql = "INSERT INTO students
@@ -28,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 ":name" => $name,
                 ":course" => $course,
                 ":section" => $section
+                ":year" => $year
             ]);
             header("Location: students.php");
             exit;
@@ -73,6 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <label>Section:</label><br>
     <input type="text" name="section" required
            value="<?= htmlspecialchars($_POST['section'] ?? '') ?>">
+    <br><br>
+
+    <label>Year:</label><br>
+    <input type="text" name="year" required
+           value="<?= htmlspecialchars($_POST['year'] ?? '') ?>">
     <br><br>
  
     <button type="submit">Save Student</button>

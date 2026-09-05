@@ -72,6 +72,10 @@ if ($id !== null) {
     <label>Section:</label><br>
     <input type="text" name="section" value="<?= htmlspecialchars($student['section']) ?>" required>
     <br><br>
+
+    <label>Year:</label><br>
+    <input type="text" name="year" value="<?= htmlspecialchars($student['year']) ?>" required>
+    <br><br>
  
     <button type="submit">Update Student</button>
 </form>
